@@ -10,7 +10,24 @@ __first submitted 8 August 2015__
 
 ## Motivation ##
 
-String interpolation is a popular feature. Everyone wants to write s"hello, \"$world\"" but they can't.
+String interpolation is a popular feature because it simplifies
+string composition and avoids using the `+` operator for concatenation.
+
+However, it deviates from ordinary string literal syntax with respect to
+escape sequences and triple-quoting (multiline strings).
+
+Everyone wants to write s"hello, \"$world\"" but they can't.
+
+Also, triple-quoted literals are not only multiline but unprocessed:
+newlines are preserved and also escape sequences.
+
+Since escape processing is performed by the interpolator but the
+interpolator can't distinguish single- and triple-quoted strings,
+an interpolator is unable to mimic the "raw" semantics of triple-quotes.
+
+The goal of this proposal is to make interpolation easier to use by
+enabling interpolators to behave like ordinary literals and, indeed,
+to unify the two mechanisms.
 
 Currently, the parser takes an interpolated string as arbitrary characters between double quotes (`"`).
 
