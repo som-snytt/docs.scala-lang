@@ -150,9 +150,15 @@ introduces a variable `subject` for the `title` field,
 and ignores `body` with the special pattern that is just an underscore, `_`.
 
 The fields of interest can also be named in Scala 3, like named arguments, of the form `name = pattern`:
+
+{% tabs named-pattern-match %}
+{% tab 'Scala 3 Only' for=named-pattern-match %}
 ```scala
 case Email(sender = sender, title = subject) =>
 ```
+{% endtab %}
+{% endtabs %}
+
 As when matching on named tuples, only the fields of interest are supplied, but they must all be named,
 even when the name and the pattern are the same, as shown here with `sender`.
 

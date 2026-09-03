@@ -131,14 +131,22 @@ case class Planet(name: String, distance: Double)
 
 In Scala 3, tuples can have named elements, with similar verbosity:
 
+{% tabs named-tuple-usage %}
+{% tab 'Scala 3 Only' for=named-tuple-usage %}
 ```scala
 type Planet = (name: String, distance: Double)
 val planets: List[Planet] = (name = "Mercury", distance = 57.9) :: ... :: Nil
 ```
+{% endtab %}
+{% endtabs %}
 The element names can be used in pattern matching:
+{% tabs named-tuple-match %}
+{% tab 'Scala 3 Only' for=named-tuple-match %}
 ```scala
 planets.map { case (name = n) => n }
 ```
+{% endtab %}
+{% endtabs %}
 where only the fields of interest are supplied in the named tuple pattern of the case statement.
 
 ## More resources
